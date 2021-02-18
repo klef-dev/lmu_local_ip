@@ -17,6 +17,12 @@ for third_digit in range(int(third_digit_input[0]), int(third_digit_input[1])):
         url = "http://196.223.{}.{}".format(third_digit, last_digit)
         try:
             r = requests.get(url, timeout=2)
-            print("{} got a status code of {}".format(url, r.status_code))
+            msg = "{} got a status code of {}".format(url, r.status_code)
+
+            f = open("success.txt", "a")
+            f.write(f"{msg}\n")
+            f.close()
+
+            print(msg)
         except:
             print("Couldn't connect to {}".format(url))
